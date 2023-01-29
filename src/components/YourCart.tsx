@@ -7,19 +7,25 @@ function YourCart() {
     const data = useAppSelector((state) => state.counter.cart)
     
     const dispatch = useAppDispatch();
-    const total = () => {
-        let sum = 0;
-        data.map(item => {
-            return(
-                sum = sum + item.qnty * item.price
-            )
-        })
-        setPrice(sum)
-    }
+    // const total = () => {
+    //     let sum = 0;
+    //     data.map(item => {
+    //         return(
+    //             sum = sum + item.qnty * item.price
+    //         )
+    //     })
+    //     setPrice(sum)
+    // }
 
     useEffect(() => {
-        total()
-    }, [total])
+      let sum = 0;
+      data.map(item => {
+          return(
+              sum = sum + item.qnty * item.price
+          )
+      })
+      setPrice(sum)
+    }, [data])
     
   return (
     <div>
