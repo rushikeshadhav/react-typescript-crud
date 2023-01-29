@@ -1,16 +1,12 @@
 import { addToCart } from '../features/counter/counterSlice';
-import { useAppDispatch, useAppSelector } from '../hooks'
-import Cardsdata from './Data'
+import { useAppDispatch } from '../hooks'
+import Cardsdata from '../Data/Data'
 import YourCart from './YourCart';
 function Cards() {
-    // const [count, setCount] = useState(0);
-    const data = useAppSelector((state) => state.counter.cart)
-    // console.log(count);
     
     const dispatch = useAppDispatch();
     
   return (
-    <>
     <div className="flex mr-20 ml-20 mt-10 justify-around">
       <div className="grid grid-cols-3 gap-10">
         {Cardsdata.map((item) => {
@@ -32,7 +28,6 @@ function Cards() {
       </div>
       <YourCart />
     </div>
-    </>
   )
 }
 

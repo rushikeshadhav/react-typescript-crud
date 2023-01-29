@@ -5,17 +5,9 @@ import { addToCart, deleteItem, decrement } from "../features/counter/counterSli
 function YourCart() {
     const [price, setPrice] = useState(0)
     const data = useAppSelector((state) => state.counter.cart)
+    console.log(data);
     
     const dispatch = useAppDispatch();
-    // const total = () => {
-    //     let sum = 0;
-    //     data.map(item => {
-    //         return(
-    //             sum = sum + item.qnty * item.price
-    //         )
-    //     })
-    //     setPrice(sum)
-    // }
 
     useEffect(() => {
       let sum = 0;
@@ -29,6 +21,7 @@ function YourCart() {
     
   return (
     <div>
+      <h2>heading</h2>
       {data.map((item) => {
         return (
           <div className="m-2" key={item.id}>
