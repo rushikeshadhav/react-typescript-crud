@@ -3,9 +3,8 @@ import { useAppDispatch, useAppSelector } from "../hooks";
 import { addToCart, deleteItem, decrement } from "../features/counter/counterSlice";
 
 function YourCart() {
+  let data = useAppSelector((state) => state.counter.cart)
     const [price, setPrice] = useState(0)
-    const data = useAppSelector((state) => state.counter.cart)
-    console.log(data);
     
     const dispatch = useAppDispatch();
 
@@ -15,9 +14,16 @@ function YourCart() {
           return(
               sum = sum + item.qnty * item.price
           )
-      })
-      setPrice(sum)
+        })
+        setPrice(sum)
+        sessionStorage.setItem("key", JSON.stringify(data))
     }, [data])
+
+    const sessionData = JSON.parse(sessionStorage.getItem("key") || '{}')
+    
+    if(data.length === 0){
+      data = sessionData
+    }
     
   return (
     <div>
